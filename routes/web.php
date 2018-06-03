@@ -11,8 +11,16 @@
 |
 */
 
+use App\Events\notifyUsers;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::get('/fire', function () {
+    event(new NotifyUsers);
+    return "Fired";
 });
 
 Auth::routes();

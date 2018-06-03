@@ -19,5 +19,11 @@ Vue.component('feeds-form', require('./components/FeedsForm.vue'));
 Vue.component('feeds', require('./components/Feeds.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    mounted() {
+        Echo.channel('notify-users')
+            .listen('NotifyUsers', (e) => {
+                alert('notify');
+            });
+    }
 });
